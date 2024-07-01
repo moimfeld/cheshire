@@ -97,6 +97,21 @@ module cheshire_top_xilinx (
     ret.VgaRedWidth     = 5;
     ret.VgaGreenWidth   = 6;
     ret.VgaBlueWidth    = 5;
+    `ifdef ARA
+    ret.Ara        = 1;
+    ret.Cva6RVV    = 1;
+    ret.Cva6RVH    = 0;
+    `ifdef NR_LANES
+    ret.AraNrLanes = `NR_LANES;
+    `else
+    ret.AraNrLanes = 2;
+    `endif
+    `ifdef NR_LANES
+    ret.AraVLEN = `VLEN;
+    `else
+    ret.AraVLEN = 2048;
+    `endif
+    `endif
     return ret;
   endfunction
 

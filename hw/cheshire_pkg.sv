@@ -72,6 +72,8 @@ package cheshire_pkg;
     // control the CIE region's size and whether it abuts with the top or bottom of this range.
     doub_bt Cva6ExtCieLength;
     bit     Cva6ExtCieOnTop;
+    bit     Cva6RVV;
+    bit     Cva6RVH;
     // Hart parameters
     bit [MaxCoresWidth-1:0] NumCores;
     doub_bt NumExtIrqHarts;
@@ -490,9 +492,9 @@ package cheshire_pkg;
       XF8ALT                : 1,
       RVA                   : 1,
       RVB                   : 0,
-      RVV                   : 0,
+      RVV                   : cfg.Cva6RVV,
       RVC                   : 1,
-      RVH                   : 1,
+      RVH                   : cfg.Cva6RVH,
       RVZCB                 : 1,
       XFVec                 : 0,
       CvxifEn               : 0,
@@ -558,6 +560,8 @@ package cheshire_pkg;
     Cva6NrPMPEntries  : 0,
     Cva6ExtCieLength  : 'h2000_0000,  // [0x2.., 0x4..) is CIE, [0x4.., 0x8..) is non-CIE
     Cva6ExtCieOnTop   : 0,
+    Cva6RVV           : 0,
+    Cva6RVH           : 1,
     // Harts
     NumCores          : 1,
     CoreMaxTxns       : 8,
